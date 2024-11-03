@@ -191,3 +191,39 @@ class Animal{
 let an=new Animal('Ant');
 // console.log(an);
 // an.move(10)
+
+
+/**Modifiers
+TypeScript supports access modifiers: 
+public (default)
+private
+protected*/
+class Person {
+    private name: string;
+    public constructor(name: string) {
+        this.name = name;
+    }
+    public getName(): string {
+        return this.name;
+    }
+}
+// const person = new Person("Alice");
+// console.log(person.getName()); // Output: Alice
+
+
+/**Getters and Setters
+You can use getters and setters to intercept access to a member of an object: */
+class Employee{
+    private _fullName:string='';
+    get fullName():string{
+        return this._fullName;
+    }
+    set fullName(newName:string){
+        this._fullName=newName
+    }
+}
+// const employee = new Employee();
+// employee.fullName = 'Alice Johnson';
+// console.log(employee.fullName); // Output: Alice Johnson
+
+

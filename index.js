@@ -111,4 +111,41 @@ var Animal = /** @class */ (function () {
 }());
 var an = new Animal('Ant');
 // console.log(an);
-an.move(10);
+// an.move(10)
+/**Modifiers
+TypeScript supports access modifiers:
+public (default)
+private
+protected*/
+var Person = /** @class */ (function () {
+    function Person(name) {
+        this.name = name;
+    }
+    Person.prototype.getName = function () {
+        return this.name;
+    };
+    return Person;
+}());
+// const person = new Person("Alice");
+// console.log(person.getName()); // Output: Alice
+/**Getters and Setters
+You can use getters and setters to intercept access to a member of an object: */
+var Employee = /** @class */ (function () {
+    function Employee() {
+        this._fullName = '';
+    }
+    Object.defineProperty(Employee.prototype, "fullName", {
+        get: function () {
+            return this._fullName;
+        },
+        set: function (newName) {
+            this._fullName = newName;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Employee;
+}());
+var employee = new Employee();
+employee.fullName = 'Alice Johnson';
+console.log(employee.fullName); // Output: Alice Johnson
