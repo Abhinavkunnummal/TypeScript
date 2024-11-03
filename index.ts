@@ -121,3 +121,73 @@ Literal types allow you to specify exact values: */
 let direction:"north"|"south"|"east"|"west";
 direction='north'; //OK
 direction='northeast'; //Error
+
+
+/**Nullable Types
+You can explicitly allow null or undefined: */
+let name:string|null='John';
+name=null; //ok
+let age:number|undefined;
+// console.log(age); //undefined
+
+
+/**Optional Properties, Elements, and Calls
+You can mark properties, elements, or function parameters as optional using ?: */
+type User = {
+    name: string;
+    age?: number; // Optional property
+};
+
+function greet(name: string, greeting?: string) {
+    // Optional parameter
+    console.log(greeting ? `${greeting}, ${name}!` : `Hello, ${name}!`);
+}
+// const user1: User = { name: "Alice" };
+// const user2: User = { name: "Bob", age: 30 };
+
+// greet(user1.name); // Output: Hello, Alice!
+// greet(user2.name, "Hi"); // Output: Hi, Bob!
+
+
+/**Interfaces
+Interfaces define the structure that objects must adhere to: */
+interface Person{
+    name:string,
+    age:number
+}
+let user:Person={name:'John',age:30}
+// console.log(user);
+
+
+/**Reopening Interfaces
+You can add new properties to an existing interface: */
+interface Person{
+    email:string;
+}
+let user:Person={name:'John',age:30,email:'john@example.com'};
+// console.log(user);
+
+
+/**Interface Inheritance
+Interfaces can extend other interfaces: */
+interface Employee extends Person{
+    employeeId:number
+}
+let user:Person={name:'john',age:30,email:'john@example.com',employeeId:101}
+// console.log(user);
+
+
+/**Classes
+Classes in TypeScript are similar to those in other object-oriented languages: */
+class Animal{
+    name:string;
+    constructor(name:string){
+        this.name=name;
+    }
+    move(distance:number=0){
+        console.log(`${this.name} moved ${distance}m.`); 
+    }
+}
+let an=new Animal('Ant');
+// console.log(an);
+// an.move(10)

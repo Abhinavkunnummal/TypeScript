@@ -78,4 +78,37 @@ var teamLead = {
     startDate: new Date(),
     department: "IT"
 };
-console.log(teamLead);
+// console.log(teamLead);
+/**Literal Types
+Literal types allow you to specify exact values: */
+var direction;
+direction = 'north'; //OK
+direction = 'northeast'; //Error
+/**Nullable Types
+You can explicitly allow null or undefined: */
+var name = 'John';
+name = null; //ok
+var age;
+function greet(name, greeting) {
+    // Optional parameter
+    console.log(greeting ? "".concat(greeting, ", ").concat(name, "!") : "Hello, ".concat(name, "!"));
+}
+var user = { name: 'John', age: 30 };
+var user = { name: 'John', age: 30, email: 'john@example.com' };
+var user = { name: 'john', age: 30, email: 'john@example.com', employeeId: 101 };
+// console.log(user);
+/**Classes
+Classes in TypeScript are similar to those in other object-oriented languages: */
+var Animal = /** @class */ (function () {
+    function Animal(name) {
+        this.name = name;
+    }
+    Animal.prototype.move = function (distance) {
+        if (distance === void 0) { distance = 0; }
+        console.log("".concat(this.name, " moved ").concat(distance, "m."));
+    };
+    return Animal;
+}());
+var an = new Animal('Ant');
+// console.log(an);
+an.move(10);
