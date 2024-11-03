@@ -227,3 +227,56 @@ class Employee{
 // console.log(employee.fullName); // Output: Alice Johnson
 
 
+/**Abstract Classes
+Abstract classes are base classes from which other classes may be derived: */
+abstract class Animal {
+    abstract makeSound(): void;
+    move(): void {
+        console.log('roaming the earth');
+    }
+}
+class Dog extends Animal {
+    makeSound(): void {
+        console.log('Bark');
+    }
+}
+// const dog = new Dog();
+// dog.makeSound(); // Output: Bark
+// dog.move();      // Output: roaming the earth
+
+
+/**Method Overriding
+Derived classes can override methods from their base class: */
+abstract class Animal {
+    abstract makeSound(): void;  // Abstract method
+
+    move(): void {
+        console.log("The animal moves around.");
+    }
+}
+class Dog extends Animal {
+    makeSound(): void {
+        console.log("Woof! Woof!");  // Overridden method
+    }
+    move(): void {
+        super.move();  // Calls the base class move method
+        console.log("The dog runs swiftly.");  // Additional behavior
+    }
+}
+// const dog = new Dog();
+// dog.makeSound(); // Output: Woof! Woof!
+// dog.move();      // Output: The animal moves around.
+//                  //         The dog runs swiftly.
+
+
+/**Difference Between Class and Abstract Class
+Regular classes can be instantiated, while abstract classes cannot.
+Abstract classes may contain abstract methods (without implementation) that must be implemented in derived classes. */
+
+/**Generics
+Generics allow you to write reusable, type-safe code: 
+Generics can be used with functions, classes, and interfaces to create reusable components.*/
+function identity<T>(arg:T):T{
+    return arg;
+}
+let output=identity<string>("mystring");

@@ -1,3 +1,18 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // Setting Types
 var age = 20;
 var name = "John";
@@ -146,6 +161,67 @@ var Employee = /** @class */ (function () {
     });
     return Employee;
 }());
-var employee = new Employee();
-employee.fullName = 'Alice Johnson';
-console.log(employee.fullName); // Output: Alice Johnson
+// const employee = new Employee();
+// employee.fullName = 'Alice Johnson';
+// console.log(employee.fullName); // Output: Alice Johnson
+/**Abstract Classes
+Abstract classes are base classes from which other classes may be derived: */
+var Animal = /** @class */ (function () {
+    function Animal() {
+    }
+    Animal.prototype.move = function () {
+        console.log('roaming the earth');
+    };
+    return Animal;
+}());
+var Dog = /** @class */ (function (_super) {
+    __extends(Dog, _super);
+    function Dog() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Dog.prototype.makeSound = function () {
+        console.log('Bark');
+    };
+    return Dog;
+}(Animal));
+// const dog = new Dog();
+// dog.makeSound(); // Output: Bark
+// dog.move();      // Output: roaming the earth
+/**Method Overriding
+Derived classes can override methods from their base class: */
+var Animal = /** @class */ (function () {
+    function Animal() {
+    }
+    Animal.prototype.move = function () {
+        console.log("The animal moves around.");
+    };
+    return Animal;
+}());
+var Dog = /** @class */ (function (_super) {
+    __extends(Dog, _super);
+    function Dog() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Dog.prototype.makeSound = function () {
+        console.log("Woof! Woof!"); // Overridden method
+    };
+    Dog.prototype.move = function () {
+        _super.prototype.move.call(this); // Calls the base class move method
+        console.log("The dog runs swiftly."); // Additional behavior
+    };
+    return Dog;
+}(Animal));
+// const dog = new Dog();
+// dog.makeSound(); // Output: Woof! Woof!
+// dog.move();      // Output: The animal moves around.
+//                  //         The dog runs swiftly.
+/**Difference Between Class and Abstract Class
+Regular classes can be instantiated, while abstract classes cannot.
+Abstract classes may contain abstract methods (without implementation) that must be implemented in derived classes. */
+/**Generics
+Generics allow you to write reusable, type-safe code:
+Generics can be used with functions, classes, and interfaces to create reusable components.*/
+function identity(arg) {
+    return arg;
+}
+var output = identity("mystring");
